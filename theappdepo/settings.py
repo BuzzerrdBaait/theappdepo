@@ -87,6 +87,8 @@ is_deployed=os.environ.get('is_deployed')
 
 if is_deployed:
 
+    print("is deployed <---------------------------------------------\n\n\n\n<------------------")
+
     django_heroku.settings(locals(), staticfiles=False)
            
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')            #
