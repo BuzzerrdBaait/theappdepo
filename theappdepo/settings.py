@@ -1,6 +1,9 @@
 
 import os
 from pathlib import Path
+import dj_database_url
+import django_heroku
+import psycopg2
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,20 +82,67 @@ DATABASES = {
     }
 }
 """
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': SCHEMA_NAME,
-        'USER' : DB_USER,
-        'PASSWORD' : DB_PASSWORD,
-        'HOST' : '127.0.0.1',
-        'PORT' : '3306',
 
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+is_deployed=os.environ.get('is_deployed')
+
+if is_deployed:
+
+    django_heroku.settings(locals(), staticfiles=False)
+           
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')            #
+    AWS_SECRET_ACCESS_KEY =os.environ.get('AWS_SECRET_ACCESS_KEY')     #
+    AWS_STORAGE_BUCKET_NAME =os.environ.get('S3_BUCKET')               #        DJANGO_STATIC = True                                               #
+    DJANGO_STATIC_FILE_PROXY = 'cloudfront.file_proxy'                 #
+    CLOUDFRONT_PUB_KEY=os.getenv('CLOUDFRONT_PUB')
+    CLOUDFRONT_SECRET=os.getenv('CLOUDFRONT_SECRET')
+    AWS_DEFAULT_ACL='public-read'                                #
+    CLOUDFRONT_URL = 'https://d17usxoyp786nd.cloudfront.net/' 
+    MEDIA_URL = CLOUDFRONT_URL
+    AWS_S3_CUSTOM_DOMAIN = CLOUDFRONT_URL   
+    DJANGO_STATIC = True
+    DJANGO_STATIC_FILE_PROXY = 'cloudfront.file_proxy'
+    #COMPRESS_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    COMPRESS_ENABLED= True
+    COMPRESS_URL= CLOUDFRONT_URL
+    #'storages.backends.s3boto3.S3Boto3Storage'
+
+
+    bucketurl='https://iloverecipes.s3.us-east-2.amazonaws.com'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3",
+        }
+    }
+    
+             
+    DATABASE_URL = os.environ['DATABASE_URL']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
+    STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
+
+else:
+        
+    DATABASES = {
+        'default' : {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': SCHEMA_NAME,
+            'USER' : DB_USER,
+            'PASSWORD' : DB_PASSWORD,
+            'HOST' : '127.0.0.1',
+            'PORT' : '3306',
+
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+                }
             }
-          }
-     }
+        }
 
 
 AUTH_PASSWORD_VALIDATORS = [
