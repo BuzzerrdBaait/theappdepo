@@ -6,15 +6,15 @@ from django.conf.urls.static import static
 
 urlpatterns=[
      
-     path("", include("home_page.urls")),
+  #   path("", include("home_page.urls")),
      
      path('', include('profiles.urls')),
 
-     path('', include('experimental_playground.urls')),
+   #  path('', include('experimental_playground.urls')),
 
-     path('', include("ilovecookbooks.urls")),
+    # path('', include("ilovecookbooks.urls")),
 
-     path('', include("flashcards.urls")),
+     #path('', include("flashcards.urls")),
 
 
      path('admin/',admin.site.urls),
