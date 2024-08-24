@@ -117,7 +117,7 @@ class Post(models.Model):
 
     thumbnail = models.ImageField(upload_to='thumbnails/')
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="unknown")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     body = models.TextField()
 
