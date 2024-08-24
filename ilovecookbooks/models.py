@@ -174,7 +174,7 @@ class WebImgs(models.Model):
 
 class UserBook(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default="unkown")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     title = models.CharField(max_length=200, default="idk")
 
