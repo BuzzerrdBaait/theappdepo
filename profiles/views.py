@@ -43,7 +43,7 @@ def login_the_user(request):
 
             login(request, user)
 
-            return redirect('home_page:home_page')
+            #return redirect('home_page:home_page')
 
         else:
 
