@@ -29,7 +29,7 @@ class Book(models.Model):
 
     title = models.CharField(max_length=200)
 
-    year = models.PositiveSmallIntegerField()
+    year = models.PositiveSmallIntegerField(default=9999)
 
     cover_photo = models.ImageField(upload_to='book_covers/')
 
