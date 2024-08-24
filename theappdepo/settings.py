@@ -14,11 +14,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*',]
 
 INSTALLED_APPS = [
-    #'flashcards',
-    #'ilovecookbooks',
+    'flashcards',
+    'ilovecookbooks',
     'profiles',
-    #'home_page',
-    #'experimental_playground',
+    'home_page',
+    'experimental_playground',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
