@@ -64,9 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'theappdepo.wsgi.application'
 
-STATICFILES_DIRS=[
-     os.path.join(BASE_DIR,'static'),
-    ]
 
 SCHEMA_NAME=os.environ.get('SCHEMA_NAME')
 DB_USER=os.environ.get('DB_USER')
@@ -124,7 +121,7 @@ if is_deployed:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
 
-    STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
 
 
 else:
