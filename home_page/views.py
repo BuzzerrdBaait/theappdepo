@@ -16,13 +16,13 @@ User = get_user_model()
 
 def home(request):
 
-     #misc_imgs= misc_images.objects.all()
+     misc_imgs= misc_images.objects.all()
 
-     #logos= logo_images.objects.all()
+     logos= logo_images.objects.all()
 
-     #ilovecookbooks_logo=logos[0]
+     ilovecookbooks_logo=logos[0]
 
-     #flashcards=logos[1]
+     flashcards=logos[1]
 
 
      greeting="The daily message is: 'Love conquers all!'"
@@ -30,9 +30,9 @@ def home(request):
      return render(request, 'home.html',{
 
           'greeting': greeting,
-      #    'misc_imgs':misc_imgs,
-      #    'ilovecookbooks':ilovecookbooks_logo,
-      #    'flashcards' : flashcards,
+          'misc_imgs':misc_imgs,
+          'ilovecookbooks':ilovecookbooks_logo,
+          'flashcards' : flashcards,
           })
 
 
