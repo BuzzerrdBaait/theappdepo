@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.urls import reverse
 
+
+CLOUDFRONT_URL='https://d17usxoyp786nd.cloudfront.net/'
 # from .forms import *
 from .models import logo_images,misc_images
 
@@ -33,6 +35,7 @@ def home(request):
           'misc_imgs':misc_imgs,
           'ilovecookbooks':ilovecookbooks_logo,
           'flashcards' : flashcards,
+          'cloudfront_url':CLOUDFRONT_URL,
           })
 
 

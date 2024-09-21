@@ -90,7 +90,7 @@
                     <h2>{{ ilovecookbooks.name }}</h2>
                 </div>
                 <a href="{% url 'ilovecookbooks:Main' %}">
-                    <img src="{{MEDIA URL}}{{ ilovecookbooks.image.url }}" alt="ilovecookbooks" class="mb-4 w-full rounded-lg shadow-lg">
+                    <img src="{{cloudfront_url}}{{ ilovecookbooks.image.url }}" alt="ilovecookbooks" class="mb-4 w-full rounded-lg shadow-lg">
                 </a>
                 <div class="image-overlay">
                     <div class="overlay-text">A cookbook library with the ability to save pages and make custom cookbooks.</div>

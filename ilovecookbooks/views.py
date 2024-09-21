@@ -16,6 +16,7 @@ from django.contrib import messages
 from .forms import UserBookForm, DeleteUserBookForm,DeleteUserBookPageForm ,UserProfilePicChangeForm, SavePageForm
 from django.http import HttpResponseForbidden
 
+CLOUDFRONT_URL='https://d17usxoyp786nd.cloudfront.net/'
 
 
 def Main(request):
@@ -33,6 +34,8 @@ def Main(request):
         'pages': pages,
 
         'all': all_books,
+
+        'cloudfront_url':CLOUDFRONT_URL,
 
     }
 
@@ -52,6 +55,7 @@ def base(request):
         'all'   : all,
         'recent': recent5,
         'pages' : pages,
+        'cloudfront_url':CLOUDFRONT_URL,
     }
         return render(request, 'base.html',context)
 
