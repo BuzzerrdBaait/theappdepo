@@ -7,7 +7,7 @@ from django.conf import settings
 from django.urls import reverse
 
 
-CLOUDFRONT_URL='https://d17usxoyp786nd.cloudfront.net/'
+CLOUDFRONT_URL='https://d17usxoyp786nd.cloudfront.net'
 # from .forms import *
 from .models import logo_images,misc_images
 
