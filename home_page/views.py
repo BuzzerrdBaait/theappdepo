@@ -7,7 +7,9 @@ from django.conf import settings
 from django.urls import reverse
 
 
-CLOUDFRONT_URL='https://d17usxoyp786nd.cloudfront.net'
+CLOUDFRONT_URL='https://d2x7o926yl4cdc.cloudfront.net'
+
+#https://d2x7o926yl4cdc.cloudfront.net/logo_images/cookbookslogo_hPndGUj.png
 # from .forms import *
 from .models import logo_images,misc_images
 
