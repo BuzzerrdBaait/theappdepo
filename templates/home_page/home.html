@@ -102,7 +102,7 @@
                     <h2>{{ flashcards.name }}</h2>
                 </div>
                 <a href="{% url 'flashcards:flashcards_home' %}">
-                    <img src="{{ flashcards.image.url }}" alt="ilovecookbooks" class="mb-4 w-full rounded-lg shadow-lg">
+                    <img src="{{cloudfront_url}}{{ flashcards.image }}" alt="ilovecookbooks" class="mb-4 w-full rounded-lg shadow-lg">
                 </a>
                 <div class="image-overlay">
                     <div class="overlay-text">An app to make and share flashcards.</div>
